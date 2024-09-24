@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airdrop Task Answers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Airdrop Task Answers</h1>
+
+        <!-- Search Bar (for tasks) -->
+        <input type="text" id="searchInput" placeholder="Search for tasks..." onkeyup="searchTasks()">
+
+        <!-- Airdrop List -->
+        <div id="airdropList">
+            <div class="airdrop" onclick="showTasks('tapswapTasks')">
+                <img class="airdrop-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnyTH33Ds8Z_vpe2LOZEdwXVCYtYl86sVgeA&s" alt="Tapswap">
+                <div class="airdrop-text">Tapswap</div>
+                <img class="verified-icon" src="https://img.icons8.com/?size=100&id=2sZ0sdlG9kWP&format=png&color=000000" alt="Verified">
+                <div class="task-preview">Last task: What is money?</div>
+            </div>
+            <div class="airdrop" onclick="showTasks('memefiTasks')">
+                <img class="airdrop-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3K7MYUDjq75Ya6ku1h9Jd5HzlS93qIK-I9g&usqp=CAU" alt="MemeFi">
+                <div class="airdrop-text">MemeFi</div>
+                <img class="verified-icon" src="https://img.icons8.com/?size=100&id=2sZ0sdlG9kWP&format=png&color=000000" alt="Verified">
+                <div class="task-preview">Last task: What is Bitcoin?</div>
+            </div>
+            <div class="airdrop" onclick="showTasks('majorTasks')">
+                <img class="airdrop-img" src="https://d3iuzwoiyg9qa8.cloudfront.net/webadmin/storage/public/airdrops/September2024/x9HRxCEM8ICajDhXIepdkE0EchqmQsRjg0DEznWl.webp" alt="Major">
+                <div class="airdrop-text">Major</div>
+                <img class="verified-icon" src="https://img.icons8.com/?size=100&id=2sZ0sdlG9kWP&format=png&color=000000" alt="Verified">
+                <div class="task-preview">Last task: Watch YouTube shorts #1</div>
+            </div>
+            <div class="airdrop" onclick="showTasks('blumTasks')">
+                <img class="airdrop-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW6Jyl1G9YVRZLKy9N_Y_8XngXQi3OcgqUZg&s" alt="Blum">
+                <div class="airdrop-text">Blum</div>
+                <img class="verified-icon" src="https://img.icons8.com/?size=100&id=2sZ0sdlG9kWP&format=png&color=000000" alt="Verified">
+                <div class="task-preview">Last task: Crypto currency</div>
+            </div>
+        </div>
+
+        <!-- Task Sections (Initially Hidden) -->
+        <div id="tapswapTasks" class="taskSection" style="display: none;">
+            <h2>Tapswap - Task Answers</h2>
+            <div class="task">
+                <h3>What is money?</h3>
+                <button onclick="copyAnswer('answer1')">Copy Answer</button>
+                <p id="answer1">Crypto</p>
+            </div>
+            <div class="task">
+                <h3>When Tapswap launched?</h3>
+                <button onclick="copyAnswer('answer2')">Copy Answer</button>
+                <p id="answer2">July 33</p>
+            </div>
+            <button onclick="goBack()">Back to Airdrops</button>
+        </div>
+
+        <div id="memefiTasks" class="taskSection" style="display: none;">
+            <h2>MemeFi - Task Answers</h2>
+            <div class="task">
+                <h3>What is Bitcoin?</h3>
+                <button onclick="copyAnswer('answer3')">Copy Answer</button>
+                <p id="answer3">Currency</p>
+            </div>
+            <button onclick="goBack()">Back to Airdrops</button>
+        </div>
+
+        <div id="majorTasks" class="taskSection" style="display: none;">
+            <h2>Major - Task Answers</h2>
+            <div class="task">
+                <h3>Watch YouTube shorts #1</h3>
+                <button onclick="copyAnswer('answer4')">Copy Answer</button>
+                <p id="answer4">BARK</p>
+            </div>
+            <button onclick="goBack()">Back to Airdrops</button>
+        </div>
+
+        <div id="blumTasks" class="taskSection" style="display: none;">
+            <h2>Blum - Task Answers</h2>
+            <div class="task">
+                <h3>Crypto currency</h3>
+                <button onclick="copyAnswer('answer5')">Copy Answer</button>
+                <p id="answer5">CRYPTOBLUM</p>
+            </div>
+            <button onclick="goBack()">Back to Airdrops</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
