@@ -4,7 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airdrop Task Answers</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background-color: #2c2f33;
+            color: #dcdde1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #3b3e42;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #00aaff;
+        }
+
+        input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 16px;
+            background-color: #32363a;
+            color: white;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .airdrop {
+            background-color: #4e5053;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            color: white;
+            width: 100%;
+        }
+
+        .airdrop:hover {
+            background-color: #606264;
+        }
+
+        .airdrop-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .airdrop-text {
+            flex: 1;
+            font-size: 20px;
+        }
+
+        .verified-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: auto;
+        }
+
+        .task-preview {
+            margin-left: 10px;
+            font-size: 12px;
+            color: #aaaaaa;
+        }
+
+        .taskSection {
+            background-color: #3b3e42;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: #00aaff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 10px auto;
+        }
+
+        button:hover {
+            background-color: #008bcc;
+        }
+
+        .task {
+            background-color: #404347;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -88,6 +194,74 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Function to search through tasks based on input
+        function searchTasks() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase(); // Get search input
+            const taskSections = document.querySelectorAll('.taskSection'); // Select all task sections
+
+            // Hide the airdrop list while searching
+            document.getElementById('airdropList').style.display = 'none';
+
+            let anyTaskVisible = false; // Track if any task let anyTaskVisible = false; // Track if any task is visible
+            
+            // Loop through all task sections to check for matching tasks
+            taskSections.forEach(section => {
+                const tasks = section.querySelectorAll('.task');
+                let sectionHasVisibleTask = false; // Track if a task in this section is visible
+                
+                tasks.forEach(task => {
+                    const question = task.querySelector('h3').textContent.toLowerCase();
+                    if (question.includes(searchInput)) {
+                        task.style.display = 'block'; // Show task if it matches search
+                        sectionHasVisibleTask = true; // Mark that this section has a visible task
+                    } else {
+                        task.style.display = 'none'; // Hide task if it does not match
+                    }
+                });
+                
+                // Show the section if it has at least one visible task
+                section.style.display = sectionHasVisibleTask ? 'block' : 'none';
+                anyTaskVisible = anyTaskVisible || sectionHasVisibleTask; // Update anyTaskVisible status
+            });
+
+            // If no task is visible, show a message or a relevant indication
+            if (!anyTaskVisible) {
+                // You can add a message here if needed
+            }
+        }
+
+        // Function to show the tasks for the selected airdrop
+        function showTasks(taskId) {
+            const airdropList = document.getElementById('airdropList');
+            const taskSections = document.querySelectorAll('.taskSection');
+
+            // Hide the airdrop list and show the specific task section
+            airdropList.style.display = 'none';
+            taskSections.forEach(section => {
+                section.style.display = (section.id === taskId) ? 'block' : 'none';
+            });
+        }
+
+        // Function to copy the answer to the clipboard
+        function copyAnswer(answerId) {
+            const answerText = document.getElementById(answerId).textContent;
+            navigator.clipboard.writeText(answerText).then(() => {
+                alert('Answer copied: ' + answerText);
+            });
+        }
+
+        // Function to go back to the airdrop list
+        function goBack() {
+            const airdropList = document.getElementById('airdropList');
+            const taskSections = document.querySelectorAll('.taskSection');
+
+            // Show the airdrop list and hide all task sections
+            airdropList.style.display = 'block';
+            taskSections.forEach(section => {
+                section.style.display = 'none';
+            });
+        }
+    </script>
 </body>
-  </html>
+</html>
